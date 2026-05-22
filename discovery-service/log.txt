@@ -1,0 +1,85 @@
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -------------------< com.example:discovery-service >--------------------
+[INFO] Building discovery-service 0.0.1-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] >>> spring-boot:3.1.5:run (default-cli) > test-compile @ discovery-service >>>
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ discovery-service ---
+[INFO] Copying 1 resource from src\main\resources to target\classes
+[INFO] Copying 0 resource from src\main\resources to target\classes
+[INFO] 
+[INFO] --- compiler:3.11.0:compile (default-compile) @ discovery-service ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ discovery-service ---
+[INFO] Not copying test resources
+[INFO] 
+[INFO] --- compiler:3.11.0:testCompile (default-testCompile) @ discovery-service ---
+[INFO] Not compiling test sources
+[INFO] 
+[INFO] <<< spring-boot:3.1.5:run (default-cli) < test-compile @ discovery-service <<<
+[INFO] 
+[INFO] 
+[INFO] --- spring-boot:3.1.5:run (default-cli) @ discovery-service ---
+[INFO] Attaching agents: []
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.1.5)
+
+2026-05-22T13:16:56.822-03:00  INFO 22440 --- [           main] c.e.d.DiscoveryServiceApplication        : Starting DiscoveryServiceApplication using Java 25.0.1 with PID 22440 (D:\microservice-java-2026\discovery-service\target\classes started by aless in D:\microservice-java-2026\discovery-service)
+2026-05-22T13:16:56.823-03:00  INFO 22440 --- [           main] c.e.d.DiscoveryServiceApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-05-22T13:16:57.341-03:00  INFO 22440 --- [           main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=bca5e284-487c-3f25-84a1-2f552153be25
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.apache.tomcat.jni.Library in an unnamed module (file:/C:/Users/aless/.m2/repository/org/apache/tomcat/embed/tomcat-embed-core/10.1.15/tomcat-embed-core-10.1.15.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+2026-05-22T13:16:57.531-03:00  INFO 22440 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8761 (http)
+2026-05-22T13:16:57.538-03:00  INFO 22440 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-05-22T13:16:57.538-03:00  INFO 22440 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.15]
+2026-05-22T13:16:57.616-03:00  INFO 22440 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-05-22T13:16:57.616-03:00  INFO 22440 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 756 ms
+2026-05-22T13:16:58.101-03:00  WARN 22440 --- [           main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'org.springframework.cloud.netflix.eureka.EurekaClientAutoConfiguration$RefreshableEurekaClientConfiguration': Unsatisfied dependency expressed through field 'optionalArgs': No qualifying bean of type 'com.netflix.discovery.AbstractDiscoveryClientOptionalArgs<?>' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2026-05-22T13:16:58.104-03:00  INFO 22440 --- [           main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-05-22T13:16:58.115-03:00  INFO 22440 --- [           main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-05-22T13:16:58.126-03:00 ERROR 22440 --- [           main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field optionalArgs in org.springframework.cloud.netflix.eureka.EurekaClientAutoConfiguration$RefreshableEurekaClientConfiguration required a bean of type 'com.netflix.discovery.AbstractDiscoveryClientOptionalArgs' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.netflix.discovery.AbstractDiscoveryClientOptionalArgs' in your configuration.
+
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  3.597 s
+[INFO] Finished at: 2026-05-22T13:16:58-03:00
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.springframework.boot:spring-boot-maven-plugin:3.1.5:run (default-cli) on project discovery-service: Process terminated with exit code: 1 -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MojoExecutionException
