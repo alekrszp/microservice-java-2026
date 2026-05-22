@@ -1,9 +1,7 @@
-package com.example.currency_service.model;
+package com.example.product_service.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class CotacaoItem {
 
     @JsonProperty("cotacaoCompra")

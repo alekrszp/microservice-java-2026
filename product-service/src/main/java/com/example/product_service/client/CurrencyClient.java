@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(
-    name = "currency-service",
-    fallback = CurrencyClientFallback.class
+        name = "currency-service",
+        fallback = CurrencyClientFallback.class
 )
 public interface CurrencyClient {
 

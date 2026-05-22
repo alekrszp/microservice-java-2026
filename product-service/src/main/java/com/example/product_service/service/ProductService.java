@@ -1,6 +1,7 @@
 package com.example.product_service.service;
 
 import com.example.product_service.client.CurrencyClient;
+import com.example.product_service.model.CotacaoResponse;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.cache.annotation.Cacheable;
@@ -18,12 +19,11 @@ public class ProductService {
     @Cacheable(value = "products", key = "#moeda")
     @CircuitBreaker(name = "currencyClient", fallbackMethod = "fallback")
     @Retry(name = "currencyClient")
-    public String getProducts(String moeda) {
-
-        return currencyClient.getCurrency(moeda);
+    public CotacaoResponse getProducts(String moeda) {
+        return currencyClient.getCotacao(moeda);
     }
 
-    public String fallback(String moeda, Exception ex) {
-        return "Fallback product-service";
+    public CotacaoResponse fallback(String moeda, Exception ex) {
+        return new CotacaoResponse(java.util.List.of());
     }
 }
