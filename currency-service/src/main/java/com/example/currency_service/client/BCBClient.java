@@ -6,16 +6,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(
-    name = "bcb-client",
-    url = "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata",
-    fallback = BCBClientFallback.class
+        name = "bcbClient",
+        url = "https://olinda.bcb.gov.br",
+        fallback = BCBClientFallback.class
 )
 public interface BCBClient {
 
-    @GetMapping(value = "/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)", produces = "application/json")
+    @GetMapping("/olinda/servico/PTAX/versao/v1/odata/CotacaoMoedaDia(moeda=@moeda,dataCotacao=@dataCotacao)")
     CotacaoResponse getCotacao(
-        @RequestParam("@moeda") String moeda,
-        @RequestParam("@dataCotacao") String dataCotacao,
-        @RequestParam("$format") String format
+            @RequestParam("@moeda") String moeda,
+            @RequestParam("@dataCotacao") String dataCotacao,
+            @RequestParam("$format") String format
     );
 }

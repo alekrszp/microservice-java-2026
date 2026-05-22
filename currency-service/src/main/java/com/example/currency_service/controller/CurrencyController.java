@@ -5,10 +5,11 @@ import com.example.currency_service.model.CotacaoResponse;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/currency")
 public class CurrencyController {
 
     private final BCBClient bcbClient;
@@ -17,12 +18,19 @@ public class CurrencyController {
         this.bcbClient = bcbClient;
     }
 
-    @GetMapping("/{moeda}")
+    @GetMapping("/currency")
     @Cacheable(value = "cotacoes", key = "#moeda")
     @CircuitBreaker(name = "bcbClient", fallbackMethod = "cotacaoFallback")
     @Retry(name = "bcbClient")
-    public CotacaoResponse getCotacao(@PathVariable String moeda) {
-        return bcbClient.getCotacao("'" + moeda + "'", "'05-14-2025'", "json");
+    public CotacaoResponse getCotacao(
+            @RequestParam(defaultValue = "USD") String moeda
+    ) {
+
+        return bcbClient.getCotacao(
+                "'" + moeda + "'",
+                "'05-14-2025'",
+                "json"
+        );
     }
 
     public CotacaoResponse cotacaoFallback(String moeda, Exception ex) {
